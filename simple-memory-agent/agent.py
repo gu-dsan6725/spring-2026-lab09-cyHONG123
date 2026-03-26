@@ -427,7 +427,8 @@ class Agent:
         self.user_id = user_id
         self.model = model
         self.agent_id = agent_id or "memory-agent"
-        self.run_id = run_id or str(uuid.uuid4())[:8]  # Short UUID for readability
+        self.run_id = run_id or f"{self.user_id}-{str(uuid.uuid4())[:8]}" # correct uuid
+        #self.run_id = run_id or str(uuid.uuid4())[:8]  # Short UUID for readability
 
         logger.info(
             f"Initializing Agent - user: {user_id}, agent: {self.agent_id}, "

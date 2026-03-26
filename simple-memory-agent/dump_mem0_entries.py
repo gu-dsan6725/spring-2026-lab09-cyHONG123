@@ -88,27 +88,30 @@ Examples:
 
         # Query memories from each run
         user_memories = []
-        for run_id in user_runs:
+        for i in range(1):
             try:
-                response = client.get_all(filters={"run_id": run_id})
+                response = client.get_all(filters={"user_id": user_id}, version="v2")
+                #response = client.get_all(filters={"run_id": run_id})
+                print(response)
                 memories = response.get("results", [])
 
                 # Always print the result for each run
-                print(f"    Run '{run_id}': {len(memories)} memories")
+                print(f"    Run '{user_id}': {len(memories)} memories")
 
                 if memories:
                     for mem in memories:
                         mem["_queried_user_id"] = user_id  # Add for reference
-                        mem["_queried_run_id"] = run_id  # Add run_id for reference
+                        mem["_queried_run_id"] = user_id  # Add run_id for reference
                         user_memories.append(mem)
             except Exception as e:
-                print(f"    Run '{run_id}': Error - {e}")
+                print(f"    Run '{user_id}': Error - {e}")
 
         # Fallback: try direct user_id query (may not work but worth trying)
         if not user_memories:
             print(f"  Trying direct user_id query as fallback...")
             try:
-                response = client.get_all(filters={"user_id": user_id})
+                response = client.memory.get_all(filters={"user_id": user_id}, version="v2")
+                #response = client.get_all(filters={"user_id": user_id})
                 memories = response.get("results", [])
                 if memories:
                     print(f"    Found {len(memories)} memories via user_id")

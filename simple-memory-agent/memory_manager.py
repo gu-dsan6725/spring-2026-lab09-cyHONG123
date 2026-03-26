@@ -82,6 +82,7 @@ from typing import (
     List,
     Optional,
 )
+import time
 
 from mem0 import MemoryClient
 
@@ -202,12 +203,17 @@ class MemoryManager:
 
             # Store in Mem0 cloud platform with user_id and run_id as first-class parameters
             self.memory.add(
-                content,
+                messages=[{"role": "user", "content": content}],
+                # content,
                 user_id=user_id,
-                run_id=run_id,
-                metadata=full_metadata
+                # run_id=run_id,
+                # metadata=full_metadata
             )
-
+        #   client.add(
+        #         messages=[{"role": "user", "content": "I like scikit-learn"}],
+        #         user_id=USER
+        #     ),
+            time.sleep(5)
             logger.info(f"Memory stored for user={user_id} with context (agent={agent_id}, session={run_id})")
 
             result = {
@@ -317,11 +323,12 @@ class MemoryManager:
                 filters.update(metadata_filters)
 
             # Search using Mem0 cloud platform with filters
-            results = self.memory.search(
-                query=query,
-                filters=filters,
-                limit=limit
-            )
+            results = self.memory.search(query=query, filters={"user_id": user_id}, version="v2", limit=limit)#, limit=limit
+            # results = self.memory.search(
+            #     query=query,
+            #     filters=filters,
+            #     limit=limit
+            # )
 
             # DEBUG: Log raw results from Mem0
             logger.debug(f"Raw Mem0 search results type: {type(results)}")
@@ -461,10 +468,20 @@ class MemoryManager:
 
             # Aggregate memories from all runs for this user
             all_memories = []
-            if user_runs:
+            if False:
                 for run_id in user_runs:
                     try:
-                        result = self.memory.get_all(filters={"run_id": run_id})
+                        # result = self.memory.get_all(filters={"run_id": run_id})
+                        # result = self.memory.get_all(
+                        #     filters={
+                        #         "AND": [
+                        #             {"user_id": user_id},
+                        #             {"agent_id": "memory-agent"},
+                        #             {"run_id": run_id},
+                        #         ]
+                        #     }
+                        # )
+                        result = self.get_all(filters={"user_id": user_id}, version="v2")
                         if isinstance(result, dict):
                             memories = result.get("results", result.get("memories", []))
                         else:
@@ -475,6 +492,7 @@ class MemoryManager:
             else:
                 # Fallback: try user_id filter (may not work but worth trying)
                 result = self.memory.get_all(filters={"user_id": user_id})
+                
                 if isinstance(result, dict):
                     all_memories = result.get("results", result.get("memories", []))
                 else:
