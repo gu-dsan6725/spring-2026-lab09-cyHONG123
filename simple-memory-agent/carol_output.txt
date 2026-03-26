@@ -1,0 +1,19 @@
+=== Carol Session 1 ===
+
+User: Hi, I'm Carol. I'm a data scientist.
+Agent: Hi Carol! Nice to meet you. I'm an AI assistant here to help with whatever you need. 
+
+Since this is our first conversation, I'll remember that you're a data scientist. Feel free to ask me questions about data science projects, analysis, coding, machine learning, statistics, or anything else you're working on. I can also help with general questions, research, brainstorming, or just having a conversation.
+
+What brings you here today? Is there something specific I can help you with?
+
+User: What programming languages do I like?
+Agent: I don't have any information about your programming language preferences yet. This is the first time we've talked!
+
+What programming languages do you like to work with? I'd be happy to hear about your favorites and remember them for our future conversations. As a data scientist, I imagine you might work with Python, R, SQL, or others depending on your focus?
+
+User: Do you know what Alice prefers?
+Agent: I don't have any information about Alice in my memory. I don't have access to other people's conversations or preferences - I only have access to information from *your* conversations with me.
+
+Are you asking about someone you know? If you'd like to tell me about Alice's preferences, feel free to share and I can help you remember or discuss them!
+

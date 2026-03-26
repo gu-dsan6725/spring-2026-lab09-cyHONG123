@@ -1,0 +1,87 @@
+=== Alice Session 1 ===
+
+User: Hi, I'm Alice. I'm a software engineer.
+Agent: Nice to meet you, Alice! Welcome! I'm glad to know you're a software engineer. This is our first interaction, so I don't have any previous context about you yet.
+
+Feel free to share more about yourself if you'd like—whether it's:
+- **Your specialties** (frontend, backend, full-stack, DevOps, etc.)
+- **Technologies** you work with
+- **Current projects** you're working on
+- **Goals** or areas you want to develop
+- **Anything else** you'd like me to remember about you
+
+I can help with coding questions, technical discussions, career advice, or whatever else you need. And as we chat, I'll remember important details about you for future conversations. What brings you here today?
+
+User: I prefer Python for development.
+Agent: Great! Python is an excellent choice and incredibly versatile. It's great for everything from web development and data science to automation, machine learning, and backend services.
+
+Since you prefer Python, I'll keep that in mind for any suggestions or help I provide. Do you have any particular domains or frameworks you work with? For example:
+
+- **Web frameworks** (Django, Flask, FastAPI, etc.)
+- **Data science & ML** (NumPy, Pandas, scikit-learn, TensorFlow, etc.)
+- **Automation & scripting**
+- **System administration**
+- **Something else?**
+
+And is there anything specific you'd like help with today—whether it's debugging, design advice, learning something new, or just technical discussion?
+
+User: What programming languages do I like?
+Agent: Based on what you've told me, you prefer **Python** for development. That's the main programming language preference I have on record for you so far.
+
+Is there anything else you'd like me to know about your language preferences? For example:
+- Are there other languages you enjoy working with besides Python?
+- Languages you dislike or avoid?
+- Languages you're interested in learning?
+
+Feel free to share, and I'll remember it for future conversations!
+
+User: I'm working on a FastAPI project.
+Agent: Awesome! FastAPI is a fantastic choice—it's modern, fast, and makes building APIs really straightforward. The automatic OpenAPI documentation is such a nice bonus too.
+
+I'd love to help with your FastAPI project! A few things I'd be happy to assist with:
+
+- **Architecture & design** questions
+- **Debugging** issues you're running into
+- **Best practices** (authentication, error handling, validation, etc.)
+- **Performance optimization**
+- **Database integration** (SQLAlchemy, async queries, etc.)
+- **Testing strategies**
+- **Deployment** and DevOps
+- Or anything else related to your project
+
+What are you building, and is there anything specific you're working on right now that you'd like help with?
+
+User: What have we discussed so far?
+Agent: Here's what we've discussed so far in our conversation:
+
+1. **Your background**: You're a software engineer named Alice
+2. **Your language preference**: You prefer **Python** for development
+3. **Your current project**: You're working on a **FastAPI project**
+
+That's the main information you've shared with me. I've stored these details so I'll remember them in future conversations.
+
+Is there anything else you'd like to tell me about yourself, your projects, or your interests? Or would you like to dive deeper into any of these topics?
+
+
+=== Alice Session 2 (New Session) ===
+
+User: What do you remember about me?
+Agent: Based on my memory, here's what I know about you:
+
+1. **Name**: Alice
+2. **Programming Preference**: You prefer Python for development
+3. **Current Project**: You're working on a FastAPI project
+
+Is there anything else you'd like me to know about you, or would you like to tell me more about your FastAPI project or other interests?
+
+User: What project am I working on?
+Agent: Based on my memory, you're working on a **FastAPI project**. 
+
+However, I only have that basic information stored. Could you tell me more about it? For example:
+- What does the project do?
+- What stage is it in (planning, development, testing, etc.)?
+- What specific challenges or features are you working on?
+- Any other details you'd like me to remember about it?
+
+This would help me provide better assistance if you have questions about your project in the future!
+
