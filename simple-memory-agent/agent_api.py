@@ -54,14 +54,6 @@ class InvocationResponse(BaseModel):
     run_id: str
     response: str
 
-class MemoryResponse(BaseModel):
-    status: str
-    user_id: str
-    run_id: str
-    memories: List[Dict[str, Any]]
-
-
-
 # Implement /ping and /invocation endpoints
 @app.get("/ping", response_model=PingResponse)
 def ping():
@@ -90,19 +82,3 @@ def invoke_agent(req: InvocationRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 print("InvocationRequest fields:", InvocationRequest.model_fields.keys())
-
-@app.get("/memories", response_model=MemoryResponse)
-def get_memories(user_id: str, run_id: str):
-    try:
-        agent = _get_or_create_agent(user_id=user_id, run_id=run_id)
-        memories = agent.get_all_memories()
-
-        return MemoryResponse(
-            status="success",
-            user_id=user_id,
-            run_id=run_id,
-            memories=memories
-        )
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
