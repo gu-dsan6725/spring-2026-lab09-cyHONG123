@@ -21,6 +21,18 @@ from strands import Agent
 from strands.telemetry import StrandsTelemetry
 from strands.tools.decorator import tool
 
+from strands.tools.mcp import MCPClient
+from mcp.client.streamable_http import streamablehttp_client
+from mcp.client.streamable_http import streamable_http_client
+
+def create_streamable_http_transport():
+    return streamable_http_client("https://mcp.context7.com/mcp")
+
+streamable_http_mcp_client = MCPClient(create_streamable_http_transport)
+
+# Use context manager to list and get tools
+with streamable_http_mcp_client:
+    mcp_tools = streamable_http_mcp_client.list_tools_sync()
 
 # Configure logging
 logging.basicConfig(
@@ -32,7 +44,10 @@ logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def _get_env_var(
     key: str,
@@ -135,16 +150,22 @@ Always cite your sources when using search results."""
     from strands.models import AnthropicModel
 
     model = AnthropicModel(
-        model_id="claude-3-haiku-20240307",
+        model_id="claude-haiku-4-5-20251001",# "claude-3-haiku-20240307", OLD MODEL WON'T WORKKKKK
         max_tokens=4096
     )
 
     # Create agent - observability is already configured globally via TracerProvider
+    # agent = Agent(
+    #     system_prompt=system_prompt,
+    #     model=model,
+    #     tools=[duckduckgo_search]
+    # )
+
     agent = Agent(
-        system_prompt=system_prompt,
-        model=model,
-        tools=[duckduckgo_search]
-    )
+    system_prompt=system_prompt,
+    model=model,
+    tools=[duckduckgo_search] + mcp_tools  # Combine DuckDuckGo and MCP tools
+)
 
     logger.info("Agent created successfully with Braintrust observability")
     return agent

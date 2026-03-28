@@ -1,0 +1,3 @@
+The braintrust metrics is quite clear that it use a similar to part 1 structure. The model after receive user prompt generate duckdb tool request, retrive info read and sumarize for user. The agent would catch the question of user and reframe to search with duckdb tool. The tool would return several json result, allowing agent to summarize.
+
+For three question i asked, it seems more the question are clear in target, the less search thus less tokens expense during the cycle of agent. And for question which is wide, the cycle may happened twice or more.
